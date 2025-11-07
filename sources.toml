@@ -1,3 +1,7 @@
 [zen]
-src.github_release = "zen-browser/desktop"
-asset = "zen.linux-x86_64.tar.xz"
+# 1) Version-Quelle: „neueste GitHub-Release“ des Repos
+src.github = "zen-browser/desktop"
+
+# 2) Wie wir das Artefakt zur Version $ver holen:
+#    (Release-Asset ist tar.xz)
+fetch.url = "https://github.com/zen-browser/desktop/releases/download/$ver/zen.linux-x86_64.tar.xz"
