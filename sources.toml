@@ -1,0 +1,3 @@
+[zen]
+src.github_release = "zen-browser/desktop"
+asset = "zen.linux-x86_64.tar.xz"
