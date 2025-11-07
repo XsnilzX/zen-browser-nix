@@ -1,0 +1,44 @@
+name: nvfetcher: zen
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # täglich 06:00 UTC; passe an, wenn du willst
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Nix
+        uses: cachix/install-nix-action@v27
+
+      - name: Run nvfetcher
+        run: nix run nixpkgs#nvfetcher -- -c sources.toml
+
+      - name: Detect changes
+        id: changes
+        run: |
+          if git diff --quiet -- _sources/generated.nix; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build to verify
+        if: steps.changes.outputs.changed == 'true'
+        run: nix build .#zen-browser-stable-bin
+
+      - name: Create PR
+        if: steps.changes.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: "auto/nvfetcher-zen"
+          title: "nvfetcher: update zen"
+          commit-message: "nvfetcher: update zen"
+          labels: auto-update
