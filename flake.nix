@@ -9,7 +9,7 @@
   in {
     packages = forAll (pkgs:
       let
-        sources = import ./_sources/generated.nix { };  # <- nvfetcher output
+        sources = pkgs.callPackage ./_sources/generated.nix { };
       in {
         zen-browser-stable-bin = pkgs.callPackage ./pkgs/zen {
           inherit sources;
