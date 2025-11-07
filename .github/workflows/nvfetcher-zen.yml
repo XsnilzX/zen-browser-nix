@@ -1,8 +1,8 @@
-name: nvfetcher: zen
+name: "nvfetcher: zen"
 
 on:
   schedule:
-    - cron: "0 6 * * *"   # täglich 06:00 UTC; passe an, wenn du willst
+    - cron: "0 6 * * *"  # täglich 06:00 UTC; passe an, wenn du willst
   workflow_dispatch: {}
 
 permissions:
@@ -13,7 +13,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Set up Nix
         uses: cachix/install-nix-action@v27
