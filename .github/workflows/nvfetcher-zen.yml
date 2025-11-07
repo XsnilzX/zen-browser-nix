@@ -2,7 +2,7 @@ name: "nvfetcher: zen"
 
 on:
   schedule:
-    - cron: "0 6 * * *"  # täglich 06:00 UTC; passe an, wenn du willst
+    - cron: "0 3 * * *"  # täglich 03:00 UTC; passe an, wenn du willst
   workflow_dispatch: {}
 
 permissions:
