@@ -6,7 +6,7 @@
     version = "1.17.6b";
     src = fetchurl {
       url = "https://github.com/zen-browser/desktop/releases/download/1.17.6b/zen.linux-x86_64.tar.xz";
-      sha256 = "sha256-iCwNEKCC7VodvxsWop7YtNW9+iT/f/3HeFIrJvgCbJo=";
+      sha256 = "sha256-IkewJI+fpECNu6LgIY5LRL7bnLlrV5Bo+tzwT1nQrM4=";
     };
   };
 }
