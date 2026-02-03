@@ -18,6 +18,22 @@
         default = self.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-stable-bin;
       });
 
+    apps = forAll (pkgs: {
+      default = {
+        type = "app";
+        program = "${self.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-stable-bin}/bin/zen";
+      };
+    });
+
+    checks = forAll (pkgs: {
+      build = self.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-stable-bin;
+    });
+
+    nixosModules = {
+      default = import ./modules/zen-browser.nix self;
+      zen-browser = self.nixosModules.default;
+    };
+
     overlays.default = final: prev: {
       zen-browser-stable-bin =
         self.packages.${prev.stdenv.hostPlatform.system}.zen-browser-stable-bin;
