@@ -40,5 +40,5 @@ jobs:
         with:
           branch: "auto/nvfetcher-zen"
           title: "nvfetcher: update zen"
-          commit-message: "nvfetcher: update zen"
+          commit-message: "update zen to: "
           labels: auto-update
