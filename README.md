@@ -3,18 +3,18 @@ Stable package of zen-browser for NixOS.
 
 ## Install (flake)
 ```sh
-nix profile install github:<owner>/zen-browser-nix
+nix profile install github:XsnilzX/zen-browser-nix
 ```
 
 Run directly:
 ```sh
-nix run github:<owner>/zen-browser-nix
+nix run github:XsnilzX/zen-browser-nix
 ```
 
 ## NixOS module
 ```nix
 {
-  inputs.zen-browser.url = "github:<owner>/zen-browser-nix";
+  inputs.zen-browser.url = "github:XsnilzX/zen-browser-nix";
 
   outputs = { self, nixpkgs, zen-browser, ... }:
   let
